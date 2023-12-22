@@ -40,8 +40,9 @@ def setUpGame():
     the window where the game will be played, the board managing the cards,
     the button now labeled Quit, and the scoring label.
     '''
-    window = GraphWin("Aces Up Solitaire", WINDOW_WIDTH, WINDOW_HEIGHT)
-
+    window = GraphWin("Aces Up Solitaire", WINDOW_WIDTH, WINDOW_HEIGHT,)
+    backImage = Image(Point(300, 250), "backImage.gif")
+    backImage.draw(window)
 
     button = Button(Point(506, 450), 60, 30, "Start")
     button.activate()
@@ -63,10 +64,10 @@ def setUpGame():
     board.dealFromStock(window)
             
 
-    return window, board, button, scoreLabel
+    return window, board, button, scoreLabel, backImage
 
 
-def playGame(window, board, button, scoreLabel):
+def playGame(window, board, button, scoreLabel, backImage):
     '''
     Plays the Aces Up solitaire game enforcing the rules and
     accumulating points as the game progresses.
@@ -134,9 +135,9 @@ def main():
     Sets up the game board, plays the game, and displays where the game
     was won or lost.
     '''
-    window, board, button, scoreLabel = setUpGame()
+    window, board, button, scoreLabel, backImage = setUpGame()
     
-    playGame(window, board, button, scoreLabel)
+    playGame(window, board, button, scoreLabel,backImage)
     
     if board.isWin() and board.isStockEmpty():
         result = 'Winner!'
